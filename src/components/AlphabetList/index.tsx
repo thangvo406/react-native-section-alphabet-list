@@ -26,14 +26,18 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
     renderCustomListHeader,
     renderCustomIndexLetter,
     indexListContentContainer,
+    originData,
     ...sectionListProps
   } = props
 
   const sectionListRef = useRef(null);
   const [sectionData, setSectionData] = useState<ISectionData[]>([])
+  const [realData, setRealData] = useState<ISectionData[]>([])
 
   useEffect(() => {
-    setSectionData(getSectionData(data, index, uncategorizedAtTop))
+    const rawData = originData.length > data.length ? originData : data;
+    setSectionData(getSectionData(rawData, index, uncategorizedAtTop))
+    setRealData(getSectionData(data, index, uncategorizedAtTop))
   }, [data])
 
   const onScrollToSection = (sectionIndex: number) => {
@@ -83,7 +87,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
         {...sectionListProps}
         testID="sectionList"
         ref={sectionListRef}
-        sections={sectionData}
+        sections={realData}
         keyExtractor={(item: IData) => item.key}
         renderItem={onRenderItem}
         renderSectionHeader={onRenderSectionHeader}
@@ -92,6 +96,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
       />
 
       <ListLetterIndex
+        realData={realData}
         sectionData={sectionData}
         onPressLetter={onScrollToSection}
         indexContainerStyle={indexContainerStyle}

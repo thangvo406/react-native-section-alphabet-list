@@ -11,6 +11,7 @@ export const ListLetterIndex: React.FC<ListLetterIndexProps> = ({
   indexLetterStyle,
   indexLetterContainerStyle,
   renderCustomIndexLetter,
+  realData,
   indexListContentContainer
 }) => {
   const onRenderCustomIndexLetter = ({ item, index }: { item: ISectionData, index: number }) => {
@@ -24,10 +25,16 @@ export const ListLetterIndex: React.FC<ListLetterIndexProps> = ({
       });
     }
 
+    const includedItem = realData?.find(it => it.title === item.title);
+    let activeStyle;
+    if(!includedItem){
+      activeStyle = {color: 'rgba(208, 47, 68, 0.5)'}
+    }
+
     return (
       <TouchableOpacity testID="indexItem" onPress={onPress}>
         <View testID="indexItem__title-container" style={[styles.letterIndexItem, indexLetterContainerStyle]}>
-          <Text testID="indexItem__title" style={[styles.letterIndexLabel, indexLetterStyle]}>{item.title}</Text>
+          <Text testID="indexItem__title" style={[styles.letterIndexLabel, indexLetterStyle,activeStyle]}>{item.title}</Text>
         </View>
       </TouchableOpacity>
     );

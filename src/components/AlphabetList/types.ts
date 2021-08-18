@@ -18,6 +18,7 @@ export interface IIndexLetterProps {
 
 export interface AlphabetListProps extends Partial<SectionListProps<IData>> {
   data: IData[];
+  originData: IData[];
   index?: string[],
   style?: ViewStyle;
   indexLetterStyle?: TextStyle,
