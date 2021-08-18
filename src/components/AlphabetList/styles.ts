@@ -5,6 +5,7 @@ import { colors } from "../../values/colors";
 export const styles = StyleSheet.create({
   container: {
     position: "relative",
+    height:'100%',
   },
 
   listItemContainer: {

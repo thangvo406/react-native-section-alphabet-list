@@ -25,6 +25,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
     renderCustomItem,
     renderCustomListHeader,
     renderCustomIndexLetter,
+    renderCustomListEmpty,
     indexListContentContainer,
     originData,
     ...sectionListProps
@@ -90,6 +91,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
         sections={realData}
         keyExtractor={(item: IData) => item.key}
         renderItem={onRenderItem}
+        ListEmptyComponent={renderCustomListEmpty}
         renderSectionHeader={onRenderSectionHeader}
         ListHeaderComponent={renderCustomListHeader}
         getItemLayout={onGetItemLayout}

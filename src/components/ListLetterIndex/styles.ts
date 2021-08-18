@@ -16,9 +16,10 @@ export const styles = StyleSheet.create({
   },
 
   letterIndexList: {
-    alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    alignItems: 'flex-start',
     height: "100%",
+    marginTop: 20,
   },
 
   letterIndexItem: {
