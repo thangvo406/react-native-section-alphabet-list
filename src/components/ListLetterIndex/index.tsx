@@ -12,7 +12,9 @@ export const ListLetterIndex: React.FC<ListLetterIndexProps> = ({
   indexLetterContainerStyle,
   renderCustomIndexLetter,
   realData,
-  indexListContentContainer
+  indexListContentContainer,
+  inActiveLetterColor,
+  listProps = {}
 }) => {
   const onRenderCustomIndexLetter = ({ item, index }: { item: ISectionData, index: number }) => {
     const onPress = () => onPressLetter(index)
@@ -29,7 +31,8 @@ export const ListLetterIndex: React.FC<ListLetterIndexProps> = ({
     let activeStyle;
     let customPress = onPress;
     if(!includedItem){
-      activeStyle = {color: 'rgba(208, 47, 68, 0.5)'}
+      activeStyle = {color: inActiveLetterColor}
+      // activeStyle = {color: 'rgba(208, 47, 68, 0.5)'}
       customPress = null;
     }
 
@@ -42,12 +45,15 @@ export const ListLetterIndex: React.FC<ListLetterIndexProps> = ({
     );
   };
 
+  const handleKeyExtra = (i) => i.title
+
   return (
     <View style={[styles.letterIndexContainer, indexContainerStyle]}>
       <FlatList
+        {...listProps}
         contentContainerStyle={[styles.letterIndexList,indexListContentContainer]}
         data={sectionData}
-        keyExtractor={(i) => i.title}
+        keyExtractor={handleKeyExtra}
         renderItem={onRenderCustomIndexLetter}
       />
     </View>

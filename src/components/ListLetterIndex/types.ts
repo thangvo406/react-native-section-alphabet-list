@@ -9,4 +9,6 @@ export interface ListLetterIndexProps {
     indexLetterContainerStyle?: AlphabetListProps["indexLetterContainerStyle"],
     renderCustomIndexLetter?: AlphabetListProps["renderCustomIndexLetter"],
     indexListContentContainer?: AlphabetListProps["indexListContentContainer"],
+    inActiveLetterColor?: AlphabetListProps["inActiveLetterColor"],
+    listProps?: AlphabetListProps["indexLetterProps"],
 }

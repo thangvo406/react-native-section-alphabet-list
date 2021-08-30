@@ -27,6 +27,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
     renderCustomIndexLetter,
     renderCustomListEmpty,
     indexListContentContainer,
+    indexLetterProps,
     originData,
     ...sectionListProps
   } = props
@@ -81,6 +82,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
     );
   };
 
+  const handleKeyExtra = (item: IData) => item.key
 
   return (
     <View style={[styles.container, style]}>
@@ -89,7 +91,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
         testID="sectionList"
         ref={sectionListRef}
         sections={realData}
-        keyExtractor={(item: IData) => item.key}
+        keyExtractor={handleKeyExtra}
         renderItem={onRenderItem}
         ListEmptyComponent={renderCustomListEmpty}
         renderSectionHeader={onRenderSectionHeader}
@@ -99,6 +101,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
 
       <ListLetterIndex
         realData={realData}
+        listProps={indexLetterProps}
         sectionData={sectionData}
         onPressLetter={onScrollToSection}
         indexContainerStyle={indexContainerStyle}
