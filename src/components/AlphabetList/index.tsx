@@ -29,6 +29,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
     indexListContentContainer,
     indexLetterProps,
     originData,
+    inActiveLetterColor,
     ...sectionListProps
   } = props
 
@@ -101,6 +102,7 @@ export const AlphabetList: React.FC<AlphabetListProps> = (props) => {
 
       <ListLetterIndex
         realData={realData}
+        inActiveLetterColor={inActiveLetterColor}
         listProps={indexLetterProps}
         sectionData={sectionData}
         onPressLetter={onScrollToSection}
