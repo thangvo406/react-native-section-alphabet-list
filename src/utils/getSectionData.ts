@@ -51,7 +51,7 @@ const getAlphabetEntrySet = (data: IData[], validLettersMap: ILetterMap) => {
 };
 
 const getItemFirstLetter = (value: string, validLettersMap: ILetterMap) => {
-  if(value || validLettersMap) return "";
+  if(!value) return "";
   const firstChar = value.substring(0, 1)
   const isValidLetter = validLettersMap[firstChar.toLowerCase()]
 
